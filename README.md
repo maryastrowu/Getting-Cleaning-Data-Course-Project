@@ -2,21 +2,28 @@
 # 1.Merges the training and the test sets to create one data set.
 # 1.1 Read all data
 X_test<-read.table("D:/Coursera courses/Getting and Cleaning Data/Course Project/UCI HAR Dataset/test/X_test.txt")
-dim(X_test) # 2947 561
+dim(X_test) 
+
 X_train<-read.table("D:/Coursera courses/Getting and Cleaning Data/Course Project/UCI HAR Dataset/train/X_train.txt")
-dim(X_train) #7352 561
+dim(X_train) 
+
 Y_test<-read.table("D:/Coursera courses/Getting and Cleaning Data/Course Project/UCI HAR Dataset/test/y_test.txt")
-dim(Y_test) # 2947 1
+dim(Y_test) 
+
 Y_train<-read.table("D:/Coursera courses/Getting and Cleaning Data/Course Project/UCI HAR Dataset/train/y_train.txt")
-dim(Y_train) #7352    1
+dim(Y_train) 
+
 subject_test<-read.table("D:/Coursera courses/Getting and Cleaning Data/Course Project/UCI HAR Dataset/test/subject_test.txt")
-dim(subject_test) #2947 1
+dim(subject_test) 
+
 subject_train<-read.table("D:/Coursera courses/Getting and Cleaning Data/Course Project/UCI HAR Dataset/train/subject_train.txt")
-dim(subject_train) #7352 1
+dim(subject_train) 
+
 activity_labels<-read.table("D:/Coursera courses/Getting and Cleaning Data/Course Project/UCI HAR Dataset/activity_labels.txt")
-dim(activity_labels) #6 2
+dim(activity_labels) 
+
 features<-read.table("D:/Coursera courses/Getting and Cleaning Data/Course Project/UCI HAR Dataset/features.txt")
-dim(features) #562 2
+dim(features) 
 
 #1.2 Combine all the data and attach variable name
 X_data<-rbind(X_test, X_train)
