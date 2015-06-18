@@ -62,9 +62,13 @@ All_data$Activity<-activity_labels[match(All_data$Activity, activity_labels$V1),
 
 # 4.Appropriately labels the data set with descriptive variable names. 
 names(All_data)<-gsub("^t", "time", names(All_data))
+
 names(All_data)<-gsub("^f", "frequency", names(All_data))
+
 names(All_data)<-gsub("Acc", "Accelerator", fixed = TRUE, names(All_data))
+
 names(All_data)<-gsub("Gyro", "Gyroscope", fixed = TRUE, names(All_data))
+
 names(All_data)<-gsub("Mag", "Magnitude", fixed=TRUE, names(All_data))
 
 # 5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
