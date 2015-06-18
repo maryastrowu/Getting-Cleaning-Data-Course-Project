@@ -27,34 +27,44 @@ dim(features)
 
 #1.2 Combine all the data and attach variable name
 X_data<-rbind(X_test, X_train)
+
 colnames(X_data) <- t(features[2])
 
 Y_data<-rbind(Y_test, Y_train)
+
 names(Y_data)[1]<-"Activity"
 
 Sub_data<-rbind(subject_test, subject_train)
+
 names(Sub_data)[1]<-"Subject"
 
 
 #1.3 Create one data set and named XY_data
 All_data<-cbind(Sub_data, X_data, Y_data)
+
 dim(All_data)
+
 names(All_data)
 
 # 2.Extracts only the measurements on the mean and standard deviation for each measurement. 
 # 2.1 Subset the variables which name containing mean()
 MeanVar_AllData<-grep("mean()", names(All_data), value=TRUE, fixed=TRUE)
+
 MeanData<-subset(All_data,select=MeanVar_AllData)
-dim(MeanData) #10299 33
+
+dim(MeanData) 
 
 # 2.2 Subset the variables which name containing std()
 StdVar_AllData<-grep("std()", names(All_data), value=TRUE, fixed=TRUE)
+
 StdData<-subset(All_data,select=StdVar_AllData)
-dim(StdData) #10299 33
+
+dim(StdData) 
 
 # 2.3 Combine mean and Std datasets
 MeanStd_AllData<- cbind(MeanData, StdData)
-dim(MeanStd_AllData) #10299 66
+
+dim(MeanStd_AllData) 
 
 
 # 3.Uses descriptive activity names to name the activities in the data set
@@ -73,11 +83,15 @@ names(All_data)<-gsub("Mag", "Magnitude", fixed=TRUE, names(All_data))
 
 # 5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 library(plyr)
-dim(All_data) #10299 563
+
+dim(All_data) 
+
 All_data2<-aggregate(. ~Subject + Activity, All_data, mean)
+
 All_data2<-All_data[order(All_data2$Subject,All_data2$Activity),]
 
 View(All_data2)
-dim(All_data2) #180 563
+
+dim(All_data2) 
 
 write.table(All_data2, file = "tidydata.txt",row.name=FALSE)
